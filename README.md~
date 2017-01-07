@@ -39,7 +39,7 @@ First, Use `Counter()` to get the frequency of each words in target article. Sec
 ```sh
 python find_key.py
 ```
-* Output : `target_keyword.txt`, list of the keywords in target article which all of them are not similar to each other.
+* Output : list of the keywords in target article which all of them are not similar to each other.
 
 
 

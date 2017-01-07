@@ -76,7 +76,22 @@ for i in range(len(s_acc)):
 	keywords.append(s_acc[i][0])
 	print s_acc[i][0]
 
+print "*********************************************"
+keywords = []
+fg = numpy.zeros(len(s_acc))
 
+for i in range(len(s_acc)):
+
+	if s_acc[i][1] < low_level or fg[i] == 1:
+		continue
+
+	for j in range(i+1,len(s_acc)):
+		if fg[j] != 1:
+			if model.similarity(s_acc[i][0], s_acc[j][0]) >= 0.6:
+				fg[j] = 1
+
+	keywords.append(s_acc[i][0])
+	print s_acc[i][0]
 
 with io.open("target_keywords.txt",'w',encoding='utf-8') as output:
         for text in keywords:

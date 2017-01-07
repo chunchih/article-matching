@@ -55,7 +55,7 @@ for key in data_feature:
 	for iters in range(raw_data[key]):
 		data_distributed.append(data_feature[key])		
 
-codes, dist = kmeans(data_distributed, 50)
+codes, dist = kmeans(data_distributed, 150)
 
 
 core = set()
