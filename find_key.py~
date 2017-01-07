@@ -12,6 +12,8 @@ import numpy
 
 f = codecs.open("target.txt",'r','utf8')
 content = f.readlines()
+for i in content:
+	print i
 article = []
 
 jieba.set_dictionary('jieba_dict/dict.txt.big')

@@ -30,15 +30,14 @@ for line in content:
 	for gg in seg_list:
 		if gg not in stopwordset:
 			article.append(gg)
-			print gg, " "
 
 
 # Count frequency
 raw_data = Counter(article)
 raw_data = { key:raw_data[key] for key in raw_data if key in model.vocab}
-print "* Count The Frequency of Data"
 
 low_level = 0
+
 for key in raw_data:
 	low_level += raw_data[key]
 
@@ -57,7 +56,7 @@ for word_1 in words:
 	for word_2 in words:
  		if model.similarity(word_1, word_2) >= 0.6:
  			acc_data[word_1] += raw_data[word_2]
-print "* Accumalated The Related Words"
+
 
 s_acc = sorted(acc_data.items(), key=operator.itemgetter(1), reverse=True)
 
@@ -77,7 +76,7 @@ for i in range(len(s_acc)):
 	keywords.append(s_acc[i][0])
 	print s_acc[i][0]
 
-print "* Eliminate The Words Alike"
+
 
 with io.open("target_keywords.txt",'w',encoding='utf-8') as output:
         for text in keywords:

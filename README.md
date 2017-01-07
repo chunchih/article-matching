@@ -4,7 +4,7 @@
 
 ## Step 1 : Download The Raw Data On Wiki 
 Organize the article on Wiki to train the model, can choose what kind of data you like [Data Link](https://dumps.wikimedia.org/zhwiki/20160820/zhwiki-20160820-pages-articles.xml.bz2)
-Output : data.xml.bz2
+* Output : data.xml.bz2
 
 ## Step 2 : Get Raw Data
 Using the function `WikiCorpus` from `gensim.corpora`, to get the sentence of the article
