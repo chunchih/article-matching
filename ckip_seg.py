@@ -29,13 +29,14 @@ for sete in r_txt:
 
 
 
-segmenter = CKIPSegmenter('username', 'account')
+segmenter = CKIPSegmenter('jerry042827', 'howard128')
 
 j = 0
 words = []
 for line in content:
     print(j)
     j+=1
+    print(line)	
 
     if line == u"\n":
         continue
