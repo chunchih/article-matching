@@ -32,7 +32,7 @@ With `wiki_seg.txt`, we use `word2vec` to train the matching model
 ```sh
 python train.py
 ```
-* Output : <model.bin> (Ref Link : https://drive.google.com/file/d/0B9bH77JfnfxlZlhFaXdudjEwVEU/view?usp=sharing)
+* Output : [model.bin] (https://drive.google.com/file/d/0B9bH77JfnfxlZlhFaXdudjEwVEU/view?usp=sharing)
 
 ## Step 6 : Find Keywords in Article
 First, Use `Counter()` to get the frequency of each words in target article. Second, each words to add the frequcy of similar words in order, and sort it. Third, from top of the list, eliminate the following words on list, which is very similar with previous one.
