@@ -1,2 +1,5 @@
 *.bin
 *.txt
+*~
+*.pyc
+ckip_seg.py
