@@ -10,32 +10,28 @@ import operator
 import numpy
 
 
-f = codecs.open("target.txt",'r','utf8')
+f = codecs.open("target_seg.txt",'r','utf8')
 content = f.readlines()
 article = []
 
-jieba.set_dictionary('jieba_dict/dict.txt.big')
 model = models.Word2Vec.load_word2vec_format('med250.model.bin',binary=True)
 
-# import stopword
-stopwordset = set()
-with io.open('jieba_dict/stopwords.txt','r',encoding='utf-8') as sw:
-	for line in sw:
-		stopwordset.add(line.strip('\n'))
-
-
-# Cut The Words , Output: short words in article
-for line in content:
-	seg_list = jieba.cut(line)
-	for gg in seg_list:
-		if gg not in stopwordset:
-			article.append(gg)
-
-
 print "* Count The Frequency of Data"
+
+line = content[0]
+pos = line.find(u" ")
+
+while pos != -1:
+	words = line[:pos]
+	article.append(words)
+	line = line[pos+1:]
+	pos = line.find(u" ")
+
+
 # Count frequency
 raw_data = Counter(article)
 raw_data = { key:raw_data[key] for key in raw_data if key in model.vocab}
+
 
 low_level = 0
 for key in raw_data:
@@ -59,8 +55,10 @@ for word_1 in words:
  			acc_data[word_1] += raw_data[word_2]
 
 
-print "* Eliminate The Words Alike"
 s_acc = sorted(acc_data.items(), key=operator.itemgetter(1), reverse=True)
+
+
+print "* Eliminate The Words Alike"
 
 keywords = []
 fg = numpy.zeros(len(s_acc))

@@ -34,7 +34,18 @@ python train.py
 ```
 * Output : [model.bin] (https://drive.google.com/file/d/0B9bH77JfnfxlZlhFaXdudjEwVEU/view?usp=sharing)
 
-## Step 6 : Find Keywords in Article
+## Step 6 : Find the Target Article:
+Download the article in  medium length into `target.txt`. 
+
+## Step 7 : Cut Target Article Into Short Pieces
+Register the account and password on CKIP. `CKIP` can provide better effect to cut the chinese sentence than `jieba`; However, the shortcome of `CKIP` is slower to `jieba` because it needs to send sentence by part with Internet and get resouce back. 
+```sh
+python ckip_seg.py
+```
+Rember to change the `'account'` and `'password'` into yours.
+* Output : target_seg.txt
+
+## Step 8 : Find keywords in Article
 First, Use `Counter()` to get the frequency of each words in target article. Second, each words to add the frequcy of similar words in order, and sort it. Third, from top of the list, eliminate the following words on list, which is very similar with previous one.
 ```sh
 python find_key.py
