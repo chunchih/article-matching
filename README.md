@@ -45,6 +45,7 @@ python find_key.py
 ```
 * Output : list of the keywords in target article which all of them are not similar to each other.
 
-[ref-site] : http://zake7749.github.io/2016/08/28/word2vec-with-gensim/
-[Link]: <https://dumps.wikimedia.org/zhwiki/20160820/zhwiki-20160820-pages-articles.xml.bz2>
+[//]:
+	[ref-site] : http://zake7749.github.io/2016/08/28/word2vec-with-gensim/
+	[Link]: <https://dumps.wikimedia.org/zhwiki/20160820/zhwiki-20160820-pages-articles.xml.bz2>
 
