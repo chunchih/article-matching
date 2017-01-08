@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from gensim.models import word2vec
 import logging
 

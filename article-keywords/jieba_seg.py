@@ -8,10 +8,11 @@ import io
 from collections import Counter
 import operator
 import numpy
+import sys
 
 
-f = codecs.open(sys.argv[0],'r','utf8')
-out = codecs.open(sys.argv[1],'w','utf8')
+f = codecs.open(sys.argv[1],'r','utf8')
+out = codecs.open(sys.argv[1][:-4]+"_seg.txt",'w','utf8')
 content = f.readlines()
 article = []
 

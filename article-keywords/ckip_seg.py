@@ -7,9 +7,10 @@ import codecs
 import time
 from collections import Counter
 import io
+import sys
 
-f = codecs.open(sys.argv[0],'r','utf8')
-f2 = codecs.open(sys.argv[1],'w','utf8')
+f = codecs.open(sys.argv[1],'r','utf8')
+f2 = codecs.open(sys.argv[1][:-4]+"_seg.txt",'w','utf8')
 
 r_txt = f.readlines()
 content = []
@@ -47,10 +48,11 @@ words = []
 for sentence in content:
 
     for line in sentence:
+	j+=1
         if line == u"\n":
-            continue
+	    continue
 
-        j+=1
+        
         print(str(j)+"/"+str(num_part_sentence))
         print(line)
 

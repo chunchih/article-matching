@@ -2,6 +2,8 @@
 
 import jieba
 import logging
+import io
+import codecs
 
 def main():
 
@@ -12,14 +14,14 @@ def main():
 
     # load stopwords set
     stopwordset = set()
-    with open('jieba_dict/stopwords.txt','r',encoding='utf-8') as sw:
+    with io.open('jieba_dict/stopwords.txt','r',encoding='utf-8') as sw:
         for line in sw:
             stopwordset.add(line.strip('\n'))
 
     texts_num = 0
 
-    output = open('wiki_seg.txt','w')
-    with open('wiki_zh_tw.txt','r') as content :
+    output = codecs.open('wiki_seg.txt','w','utf8')
+    with io.open('wiki_zh_tw.txt','r',encoding='utf-8') as content :
         for line in content:
             line = line.strip('\n')
             words = jieba.cut(line, cut_all=False)

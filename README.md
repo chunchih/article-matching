@@ -42,19 +42,27 @@ python w2v-train.py
 Put the article in  medium length into `target_article.txt` in `article-keywords`. 
 
 ## Step 7 : Cut Target Article Into Short Pieces
+* Recommend Use `jieba` to seperate the words if your model is trained by jieba's method.
+* But if you have the model trained by CKIP way, please use it and get better matching effect
+```sh
+python jieba_seg.py target_article.txt
+```
+### or 
 Register the account and password on CKIP. `CKIP` can provide better effect to cut the chinese sentence than `jieba`; However, the shortcome of `CKIP` is slower to `jieba` because it needs to send sentence by part with Internet and get resouce back. 
 ```sh
-python ckip_seg.py target_article.txt target_seg.txt
+python ckip_seg.py target_article.txt
 ```
 Rember to put your account and password into `ckip_account.txt` in two lines
-* Output : `article-keywords/target_seg.txt`
+
+
+* Output : `article-keywords/target_article_seg.txt`
 
 ## Step 8 : Find keywords in target article
 First, Use `Counter()` to get the frequency of each words in target article. Second, each words to add the frequcy of similar words in order, and sort it. Third, from top of the list, eliminate the following words on list, which is very similar with previous one.
 ```sh
-python find_key.py target_seg.txt target_keywords.txt
+python find_key_weight.py target_article_seg.txt
 ```
-* Output : `article-keywords/target_keywords.txt`, list of the keywords in target article which all of them are not similar to each other.
+* Output : `article-keywords/target_article_keywords.txt`, list of the keywords in target article which all of them are not similar to each other.
 
 
 
