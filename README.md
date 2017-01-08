@@ -23,7 +23,7 @@ opencc -i wiki_texts.txt -o wiki_zh_tw.txt -c s2tw.json
 ## Step 4 : Cut the Sentence
 Using the `jieba` to cut the chinese senetence into short words
 ```sh
-python segment.py
+python wiki_seg_jieba.py
 ```
 * Output : wiki_seg.txt
 
