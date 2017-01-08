@@ -34,7 +34,7 @@ With `wiki_seg.txt`, we use `word2vec` to train the matching model
 ```sh
 python w2v-train.py
 ```
-* Output : `word2vec-model/[model.bin] (https://drive.google.com/file/d/0B9bH77JfnfxlZlhFaXdudjEwVEU/view?usp=sharing)`
+* Output : `word2vec-model/`[model.bin] (https://drive.google.com/file/d/0B9bH77JfnfxlZlhFaXdudjEwVEU/view?usp=sharing)
 
 # Into article-keywords Folder
 
