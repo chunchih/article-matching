@@ -2,14 +2,15 @@
 
 from __future__ import unicode_literals, print_function
 
-from ckip import CKIPSegmenter, CKIPParser
+from ckip import CKIPSegmenter
 import codecs
 import time
 from collections import Counter
 import io
 
-f = codecs.open("target.txt",'r','utf8')
-f2 = codecs.open("target_seg.txt",'w','utf8')
+f = codecs.open(sys.argv[0],'r','utf8')
+f2 = codecs.open(sys.argv[1],'w','utf8')
+
 r_txt = f.readlines()
 content = []
 num_part_sentence = 0

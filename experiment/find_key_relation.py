@@ -10,7 +10,7 @@ import operator
 import numpy
 
 
-f = codecs.open("target.txt",'r','utf8')
+f = codecs.open("target_article.txt",'r','utf8')
 content = f.readlines()
 article = []
 

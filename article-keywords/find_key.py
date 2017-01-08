@@ -10,12 +10,12 @@ import operator
 import numpy
 
 
-f = codecs.open("target.txt",'r','utf8')
+f = codecs.open(sys.argv[0],'r','utf8')
 content = f.readlines()
 article = []
 
 jieba.set_dictionary('jieba_dict/dict.txt.big')
-model = models.Word2Vec.load_word2vec_format('med250.model.bin',binary=True)
+model = models.Word2Vec.load_word2vec_format('../word2vec-training/med250.model.bin',binary=True)
 
 # import stopword
 stopwordset = set()
@@ -80,7 +80,7 @@ for i in range(len(s_acc)):
 
 
 
-with io.open("target_keywords.txt",'w',encoding='utf-8') as output:
+with io.open(sys.argv[1],'w',encoding='utf-8') as output:
         for text in keywords:
             output.write(text + '\n')
 

@@ -112,6 +112,8 @@ class CKIPClient(object):
     def _extract_sentence(self, sentence):
         raise NotImplementedError()
 
+    
+
     def process(self, text):
         tree = self.__build_request_xml(text)
         msg = tostring(tree, encoding=self._ENCODING, xml_declaration=True)
