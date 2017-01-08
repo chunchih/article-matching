@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#################################################
-# example.py
-# ckip.py
-#
-# Copyright (c) 2012-2014, Chi-En Wu
-# Distributed under The BSD 3-Clause License
-#################################################
-
 from __future__ import unicode_literals, print_function
 
 from ckip import CKIPSegmenter, CKIPParser
@@ -20,34 +12,55 @@ f = codecs.open("target.txt",'r','utf8')
 f2 = codecs.open("target_seg.txt",'w','utf8')
 r_txt = f.readlines()
 content = []
-for sete in r_txt:
-    pos = sete.find(u"。")
+num_part_sentence = 0
+
+for sentence in r_txt:
+    part_sentence = []
+
+    pos = sentence.find(u"。")
+    if pos == -1:
+        pos = sentence.find(u"？")
+
     while pos != -1:
-        content.append(sete[:pos])
-        sete = sete[pos+1:]
-        pos = sete.find(u"。")
+        part_sentence.append(sentence[:pos])
+        num_part_sentence += 1
 
+        sentence = sentence[pos+1:]
+        pos = sentence.find(u"。")
+        if pos == -1:
+            pos = sentence.find(u"？")
 
+    if len(part_sentence) == 0:
+        part_sentence.append(u"".join(sentence))
+        num_part_sentence += 1
 
-segmenter = CKIPSegmenter('username', 'password')
+    content.append(part_sentence)
+
+f_account = codecs.open("ckip_account.txt",'r')
+account_info = f_account.readlines()
+
+segmenter = CKIPSegmenter(account_info[0][:-1], account_info[1][:-1])
 
 j = 0
 words = []
-for line in content:
-    print(j)
-    j+=1
-    print(line)	
+for sentence in content:
 
-    if line == u"\n":
-        continue
-    
-    result = segmenter.process(line)
-    if result['status_code'] != '0':
-        print('Process Failure: ' + result['status'])
+    for line in sentence:
+        if line == u"\n":
+            continue
 
-    for sentence in result['result']:
-        for term in sentence:
-            words.append(term['term'])
-    time.sleep(3)
+        j+=1
+        print(str(j)+"/"+str(num_part_sentence))
+        print(line)
+
+        result = segmenter.process(line)
+        if result['status_code'] != '0':
+            print('Process Failure: ' + result['status'])
+
+        for sent in result['result']:
+            for term in sent:
+                words.append(term['term'])
+
+        time.sleep(3)
 
 f2.write(u' '.join(words))
